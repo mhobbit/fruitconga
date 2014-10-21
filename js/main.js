@@ -1,20 +1,22 @@
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
-    game.load.audio('conga', ['assets/audio/conga.ogg' , 'assets/audio/conga.mp3'], true);
+    game.load.audio('conga', ['assets/audio/clicktrack_122bpm.ogg' , 'assets/audio/clicktrack_122bpm.mp3'], true);
     game.load.spritesheet('pickle', 'assets/banana_spritesheet.png', 33, 35, 8, 0, 0);
 
 }
 //varios
 var music;
 var pickle;
+//debug
 var i = 0;
+var n = 0;
 //conductor
 var bpm = 122;
 var lastbeat = 0;
-var beat = 60/bpm;
+var beat = 60000/bpm;
 var offset;
-var tolerance = 100;
+var tolerance = 120;
 
 var nbeat = 0;
 
@@ -31,7 +33,7 @@ function create() {
 
     music = game.add.audio('conga');
     music.play();
-    offset = 1000;
+    offset = 0;
     lastbeat += offset;
 }
 
@@ -43,15 +45,18 @@ function update() {
 
 function render() {
     game.debug.text(music.currentTime, 20, 30);
-    game.debug.text(nbeat/32, 20, 45);
+    game.debug.text(lastbeat, 20, 45);
     game.debug.text( i, 20, 60 );
+    game.debug.text( n, 20, 75 );
 }
 
 function clickOnBeat(event, sprite){
     var time = music.currentTime;
-    var nextBeat = lastbeat+beat;
-    if(nextBeat - tolerance < time && time > nextBeat + tolerance){
-        i += 1;
+    i = time;
+    if(time >= lastbeat - tolerance){
+        if(time <= lastbeat + tolerance){
+            n += 1;
+        }
     }
 }
 
@@ -60,5 +65,6 @@ function musicOn(){
 
     if(music.currentTime > lastbeat + beat){
         nbeat +=1;
+        lastbeat += beat;
     }
 }

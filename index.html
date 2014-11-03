@@ -56,7 +56,14 @@
 		        		tempj = ((temp.y - baseheight) / size);
 		        		valor = grilla[(10 * tempi) + tempj];
 		        		if(tempi > 0 && grilla[(10 * (tempi - 1)) + tempj] == valor){
-		        			grilla[(10 * (tempi - 1)) + tempj] = parseInt(Math.random() * 3);
+		        			tipo = parseInt(Math.random() * 3);
+		        			grilla[(10 * (tempi - 1)) + tempj] = tipo;
+		        			if(tipo == 0)
+		        				grillaSprites[(10 * (tempi - 1)) + tempj] = game.add.sprite((tempi * size) + basewidth, (tempj * size + baseheight, 'manzana'));
+		        			else if(tipo == 1)
+		        				grillaSprites[(10 * (tempi - 1)) + tempj] = game.add.sprite((tempi * size) + basewidth, (tempj * size + baseheight, 'naranja'));
+		        			else if(tipo == 2)
+		        				grillaSprites[(10 * (tempi - 1)) + tempj] = game.add.sprite((tempi * size) + basewidth, (tempj * size + baseheight, 'platano'));
 		        		}
 		        	}
 		        }

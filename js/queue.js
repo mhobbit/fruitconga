@@ -52,15 +52,24 @@ function QueueUpdate(queue){
 		lastbeat += beat;
 		for(i = 0; i < queue.length; i++){
 	        if(queue[i].x > 600){
-	        	queue[i].kill();
-	        	flag = true;
+	        	if(queue[i].alive){
+	        		multipler = 1;
+	        		multipler_text.fontSize = 10;
+	        		multipler_text.text = '';
+		        	queue[i].kill();
+		        	flag = true;
+		        }
+		        else{
+		        	flag = true;
+		        }
 	        }
 	        else
 	            queue[i].x += 40;
 	    }
 	    if(delay){
 	    	addInQueue();
-	    	delay = false;
+	    	if(Math.random() > .5)
+	    		delay = false;
 	    }
 	    else
 	    	delay = true;

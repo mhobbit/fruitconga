@@ -15,7 +15,9 @@ function preload() {
 var tablero = [];
 var cola = [];
 var score_text;
+var multipler_text;
 var selector;
+var time;
 
 //MUSICA
 var music;
@@ -27,11 +29,10 @@ function create() {
     music.play();
     score_text = game.add.text(5, 5, '', {fill: '#000'});
     selector = game.add.text(586, 38, '[   ]', {fill: '#000'});
+    multipler_text = game.add.text(700, 500, '', {fill: '#000'});
+    multipler_text.fontSize = 10;
 }
 
 function update() {
     QueueUpdate(cola);
-    if(score > 0){
-        score_text.text = "Score: " + score;
-    }
 }

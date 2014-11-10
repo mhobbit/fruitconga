@@ -2,6 +2,7 @@
 var matrix_x = 180, matrix_y = 150, tam = 7;
 var difx = 40, dify = 40;
 var score = 0;
+var multipler = 1;
 
 //Metodos
 function createMatris(matrix, game){
@@ -67,6 +68,16 @@ function matrixClickHandler(sprite){
     var x, y;
     x = ((sprite.x - matrix_x) / difx);
     y = ((sprite.y - matrix_y) / dify);
+    for(i = 0; i < cola.length; i++){
+	    if(cola[i].x == 590 && cola[i].key == sprite.key){
+	    	if(multipler < 9){
+		    	multipler++;
+		    	multipler_text.text = multipler + " X";
+		    	multipler_text.fontSize += 5;
+	    	}
+	    	cola[i].kill();
+	    }
+	}
     KillTheSame(x, y, tablero[y*tam + x].key);
 	DownTheRest();
 }
@@ -119,7 +130,8 @@ function DownTheRest(){
 
 function KillTheSame(x, y, key){
 	tablero[y*tam + x].kill();
-	score += 10;
+	score += 10 * multipler;
+	score_text.text = "Score: " + score;
 	if(y - 1 >= 0 && tablero[(y - 1)*tam + x].alive && tablero[(y - 1)*tam + x].key == key){
 		KillTheSame(x, y - 1, key);
 	}

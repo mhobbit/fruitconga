@@ -1,0 +1,10 @@
+#phaser_example{
+	width: 100%;
+	background-color: red;
+}
+
+@media screen and (max-width: 500px){
+	#phaser_example{
+		background-color: blue;
+	}
+}

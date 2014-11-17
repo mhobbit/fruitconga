@@ -1,6 +1,6 @@
 var width = 800;
 var height = 600;
-var game = new Phaser.Game(width, height, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update });
+var game = new Phaser.Game(width, height, Phaser.CANVAS, 'phaser_example', { preload: preload, create: create, update: update });
 
 function preload() {
     game.load.audio('conga', ['assets/audio/conga.ogg' , 'assets/audio/conga.mp3'], true);
@@ -27,7 +27,7 @@ function create() {
     createMatris(tablero, game);
     music = game.add.audio('conga');
     music.play();
-    score_text = game.add.text(5, 5, '', {fill: '#000'});
+    score_text = game.add.text(5, 5, screen.width + ';' + screen.height, {fill: '#000'});
     selector = game.add.text(586, 38, '[   ]', {fill: '#000'});
     multipler_text = game.add.text(700, 500, '', {fill: '#000'});
     multipler_text.fontSize = 10;

@@ -26,16 +26,20 @@ BasicGame.Preloader.prototype = {
 
 		//	Here we load the rest of the assets our game needs.
 		//	You can find all of these assets in the Phaser Examples repository
-
+		this.load.audio('conga', ['assets/audio/latin/Beachfront Celebration.mp3'], true);
+	    this.load.image('audioOn', 'assets/img/musicOn.png');
+	    this.load.image('audioOff', 'assets/img/musicOff.png');
 	    this.load.image('logo', 'assets/img/logo.png');
+	    this.load.image('logoSmall', 'assets/img/logo_300.png');
 	    this.load.image('mainmenubg', 'assets/img/mainmenu.jpg');
     	this.load.spritesheet('playButton', 'assets/buttons/play_button.png', 190,  49);
+    	this.load.spritesheet('returnButton', 'assets/buttons/return_button.png', 190,  49);
     	this.load.spritesheet('creditsButton', 'assets/buttons/credits_button.png', 190,  49);
 
+    	game.load.text('credits', 'assets/text/credits.txt');
 	},
 
 	create: function () {
-
 		this.state.start('MainMenu');
 
 	}

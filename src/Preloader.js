@@ -37,6 +37,8 @@ BasicGame.Preloader.prototype = {
     	this.load.spritesheet('creditsButton', 'assets/buttons/credits_button.png', 190,  49);
 
     	game.load.text('credits', 'assets/text/credits.txt');
+
+    	
 	},
 
 	create: function () {

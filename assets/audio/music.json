@@ -1,0 +1,14 @@
+ {
+ "stage1": [
+       {"name":"song1", "songlist":"[\"assets/clicktrack_122bpm.mp3\", \"assets/clicktrack_122bpm.ogg\"]", "bpm": 122 ,"offset": 0},
+       {"name":"song1", "songlist":"[\"clicktrack_122bpm.mp3\", \"clicktrack_122bpm.ogg\"]", "bpm": 122 ,"offset": 0},
+     ],
+ "stage1": [
+       {"name":"song1", "songlist":"[\"clicktrack_122bpm.mp3\", \"clicktrack_122bpm.ogg\"]", "bpm": 122 ,"offset": 0},
+       {"name":"song1", "songlist":"[\"clicktrack_122bpm.mp3\", \"clicktrack_122bpm.ogg\"]", "bpm": 122 ,"offset": 0},
+     ],
+ "stage1": [
+       {"name":"song1", "songlist":"[\"clicktrack_122bpm.mp3\", \"clicktrack_122bpm.ogg\"]", "bpm": 122 ,"offset": 0},
+       {"name":"song1", "songlist":"[\"clicktrack_122bpm.mp3\", \"clicktrack_122bpm.ogg\"]", "bpm": 122 ,"offset": 0},
+     ]
+}

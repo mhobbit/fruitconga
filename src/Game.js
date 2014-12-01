@@ -25,16 +25,25 @@ BasicGame.Game = function () {
 
     //Extras!!
     this.grilla;
+    this.bg;
+    this.music;
 };
 
 BasicGame.Game.prototype = {
     preload: function(){
-        game.load.spritesheet('banana', 'assets/img/banana.png', 33, 35, 8);
-        game.load.spritesheet('apple', 'assets/img/apple.png', 35, 35, 8);
-        game.load.spritesheet('green_apple', 'assets/img/green_apple.png', 35, 35, 8);
-        game.load.spritesheet('pina', 'assets/img/pina.png', 35, 35, 8);
-        game.load.spritesheet('sandia', 'assets/img/sandia.png', 35, 35, 8);
-        game.load.spritesheet('piso', 'assets/img/Piso.png', 300, 10, 1);
+        this.game.load.spritesheet('banana_1', 'assets/img/banana.png', 35, 35, 8);
+        this.game.load.spritesheet('apple_1', 'assets/img/apple.png', 35, 35, 8);
+        this.game.load.spritesheet('green_apple_1', 'assets/img/green_apple.png', 35, 35, 8);
+        this.game.load.spritesheet('pina_1', 'assets/img/pina.png', 35, 35, 8);
+        this.game.load.spritesheet('sandia_1', 'assets/img/sandia.png', 35, 35, 8);
+        this.load.image('game_bg', 'assets/backgrounds/game.png');
+        this.load.image('banana', 'assets/img/frutitas/1.png');
+        this.load.image('morado', 'assets/img/frutitas/2.png');
+        this.load.image('verde', 'assets/img/frutitas/3.png');
+        this.load.image('rojo', 'assets/img/frutitas/4.png');
+        this.load.image('naranjo', 'assets/img/frutitas/5.png');
+        this.music = new Song([ 'assets/audio/latin/Peppy Pepe.ogg'], 124, 0, this.game);
+        this.music.preload();
     },
 
 	create: function () {
@@ -42,12 +51,20 @@ BasicGame.Game.prototype = {
         //piso = this.game.add.sprite((game.width/2 - 115), ((game.height/2) + 130), 'piso', 0);
 
         //GRILLA
+        this.bg = this.add.sprite(this.world.centerX-340,this.world.centerY -215 , 'game_bg');
         this.grilla = new matrix(game);
         this.grilla.create(6, 7);
 
+        //COLA
+        this.music.create();
+        this.cola = new Cola(this.game, this.music);
+        for(i = 0; i < 6; i++)
+            this.cola.addInQueue();
 	},
 
 	update: function () {
+        this.music.update();
+        //this.cola.QueueUpdate();
 	},
 
 	quitGame: function (pointer) {

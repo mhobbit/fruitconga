@@ -25,19 +25,23 @@ BasicGame.Game = function () {
 
     //Extras!!
     this.grilla;
+    this.bg;
 };
 
 BasicGame.Game.prototype = {
     preload: function(){
-        game.load.spritesheet('banana', 'assets/img/banana.png', 33, 35, 8);
-        game.load.spritesheet('apple', 'assets/img/apple.png', 35, 34, 8);
-        game.load.spritesheet('green_apple', 'assets/img/green_apple.png', 33, 35, 8);
-        game.load.spritesheet('pina', 'assets/img/pina.png', 35, 35, 8);
-        game.load.spritesheet('sandia', 'assets/img/sandia.png', 35, 35, 8);
+        this.load.image('game_bg', 'assets/backgrounds/game.png');
+        this.load.image('banana', 'assets/img/frutitas/1.png');
+        this.load.image('morado', 'assets/img/frutitas/2.png');
+        this.load.image('verde', 'assets/img/frutitas/3.png');
+        this.load.image('rojo', 'assets/img/frutitas/4.png');
+        this.load.image('naranjo', 'assets/img/frutitas/5.png');
+
     },
 
 	create: function () {
         //GRILLA
+        this.bg = this.add.sprite(this.world.centerX-340,this.world.centerY -215 , 'game_bg');
         this.grilla = new matrix(game);
         this.grilla.create(6, 7);
 

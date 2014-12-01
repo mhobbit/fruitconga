@@ -2,7 +2,7 @@ function matrix(game){
 	this.game = game;
 	this.starx;
 	this.stary;
-	this.size = 35;
+	this.size = 40;
 }
 
 matrix.prototype.createFruit = function(x, y){
@@ -12,16 +12,16 @@ matrix.prototype.createFruit = function(x, y){
 		temp = this.game.add.sprite(this.starx + (this.size * x), this.stary + (this.size * y), 'banana', 3);
 	}
 	else if(value < .4){
-		temp = this.game.add.sprite(this.starx + (this.size * x), this.stary + (this.size * y), 'apple', 3);
+		temp = this.game.add.sprite(this.starx + (this.size * x), this.stary + (this.size * y), 'morado', 3);
 	}
 	else if(value < .6){
-		temp = this.game.add.sprite(this.starx + (this.size * x), this.stary + (this.size * y), 'green_apple', 3);
+		temp = this.game.add.sprite(this.starx + (this.size * x), this.stary + (this.size * y), 'verde', 3);
 	}
 	else if(value < .8){
-		temp = this.game.add.sprite(this.starx + (this.size * x), this.stary + (this.size * y), 'pina', 3);
+		temp = this.game.add.sprite(this.starx + (this.size * x), this.stary + (this.size * y), 'rojo', 3);
 	}
 	else{
-		temp = this.game.add.sprite(this.starx + (this.size * x), this.stary + (this.size * y), 'sandia', 3);
+		temp = this.game.add.sprite(this.starx + (this.size * x), this.stary + (this.size * y), 'naranjo', 3);
 	}
 	temp.inputEnabled = true;
 	temp.input.useHandCursor = true;
@@ -106,7 +106,7 @@ matrix.prototype.createNew = function(){
 }
 
 matrix.prototype.downList = function(list){
-	for(t = 0; t < 35; t++){
+	for(t = 0; t < this.size; t++){
 		for(i = 0; i < list.length; i++){
 			this.matrix[list[i][0]][list[i][1]].y += 1;
 		}

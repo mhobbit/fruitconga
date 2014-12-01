@@ -31,11 +31,11 @@ BasicGame.Game = function () {
 
 BasicGame.Game.prototype = {
     preload: function(){
-        this.game.load.spritesheet('banana_1', 'assets/img/banana.png', 35, 35, 8);
-        this.game.load.spritesheet('apple_1', 'assets/img/apple.png', 35, 35, 8);
-        this.game.load.spritesheet('green_apple_1', 'assets/img/green_apple.png', 35, 35, 8);
-        this.game.load.spritesheet('pina_1', 'assets/img/pina.png', 35, 35, 8);
-        this.game.load.spritesheet('sandia_1', 'assets/img/sandia.png', 35, 35, 8);
+        this.game.load.spritesheet('banana_1', 'assets/sprites/1.png', 35, 35, 8);
+        this.game.load.spritesheet('morado_1', 'assets/sprites/2.png', 35, 35, 8);
+        this.game.load.spritesheet('verde_1', 'assets/sprites/3.png', 35, 35, 8);
+        this.game.load.spritesheet('rojo_1', 'assets/sprites/4.png', 35, 35, 8);
+        this.game.load.spritesheet('naranjo_1', 'assets/sprites/5.png', 35, 35, 8);
         this.load.image('game_bg', 'assets/backgrounds/game.png');
         this.load.image('banana', 'assets/img/frutitas/1.png');
         this.load.image('morado', 'assets/img/frutitas/2.png');

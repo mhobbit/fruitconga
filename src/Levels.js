@@ -30,15 +30,15 @@ BasicGame.Levels.prototype = {
 	},
 
     stage1Click: function(){
-        game.state.start('Levels');
+        game.state.start('Game');
     },
 
     stage2Click: function(){
-        game.state.start('Levels');
+        game.state.start('Game');
     },
 
     stage3Click: function(){
-        game.state.start('Levels');
+        game.state.start('Game');
     },
 
 	quitGame: function (pointer) {

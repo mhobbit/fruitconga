@@ -23,30 +23,31 @@ BasicGame.Game = function () {
     //	You can use any of these from any function within this State.
     //	But do consider them as being 'reserved words', i.e. don't create a property for your own game called "world" or you'll over-write the world reference.
 
+    //Extras!!
+    this.grilla;
 };
 
 BasicGame.Game.prototype = {
+    preload: function(){
+        game.load.spritesheet('banana', 'assets/img/banana.png', 33, 35, 8);
+        game.load.spritesheet('apple', 'assets/img/apple.png', 35, 34, 8);
+        game.load.spritesheet('green_apple', 'assets/img/green_apple.png', 33, 35, 8);
+        game.load.spritesheet('pina', 'assets/img/pina.png', 35, 35, 8);
+        game.load.spritesheet('sandia', 'assets/img/sandia.png', 35, 35, 8);
+    },
 
 	create: function () {
-
-		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
+        //GRILLA
+        this.grilla = new matrix(game);
+        this.grilla.create(6, 7);
 
 	},
 
 	update: function () {
-
-		//	Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-
 	},
 
 	quitGame: function (pointer) {
-
-		//	Here you should destroy anything you no longer need.
-		//	Stop music, delete sprites, purge caches, free resources, all that good stuff.
-
-		//	Then let's go back to the main menu.
 		this.state.start('MainMenu');
-
 	}
 
 };

@@ -26,6 +26,9 @@ matrix.prototype.createFruit = function(x, y){
 	temp.inputEnabled = true;
 	temp.input.useHandCursor = true;
 	temp.events.onInputDown.add(this.onClick, this);
+	/*this.game.physics.enable(temp, Phaser.Physics.ARCADE);
+	temp.body.bounce.set(0);
+	temp.body.gravity.set(0, 180);*/
 	return temp;
 }
 
@@ -51,9 +54,8 @@ matrix.prototype.onClick = function(sprite){
 	//list = this.createNew();
 	//console.log(list);
 	//this.downList(list);
-	while(list = this.createNew()){
-		this.downList(list);
-	}
+	list = this.createNew();
+	this.downList(list);
 };
 
 matrix.prototype.killTheSame = function(x, y){
@@ -100,15 +102,25 @@ matrix.prototype.createNew = function(){
 		}
 	}
 	if(flag)
-		return list;
+		this.downList(list);
 	else
 		return false;
 }
 
 matrix.prototype.downList = function(list){
-	for(t = 0; t < 35; t++){
+	/*for(t = 0; t < 35; t++){
 		for(i = 0; i < list.length; i++){
 			this.matrix[list[i][0]][list[i][1]].y += 1;
 		}
+	}*/
+	console.log(this);
+	listas = [];
+	for(i = 0; i < list.length; i++){
+		pos = this.matrix[list[i][0]][list[i][1]].y + this.size;
+		sprite = this.matrix[list[i][0]][list[i][1]];
+		itween = this.game.add.tween(sprite).to({y: pos}, 10000, Phaser.Easing.Default, true, 0, 0, false);
 	}
+	itween.onComplete.active = true;
+	itween.onComplete.add(this.createNew);
+	return itween;
 }

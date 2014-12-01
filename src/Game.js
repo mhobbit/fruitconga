@@ -30,13 +30,17 @@ BasicGame.Game = function () {
 BasicGame.Game.prototype = {
     preload: function(){
         game.load.spritesheet('banana', 'assets/img/banana.png', 33, 35, 8);
-        game.load.spritesheet('apple', 'assets/img/apple.png', 35, 34, 8);
-        game.load.spritesheet('green_apple', 'assets/img/green_apple.png', 33, 35, 8);
+        game.load.spritesheet('apple', 'assets/img/apple.png', 35, 35, 8);
+        game.load.spritesheet('green_apple', 'assets/img/green_apple.png', 35, 35, 8);
         game.load.spritesheet('pina', 'assets/img/pina.png', 35, 35, 8);
         game.load.spritesheet('sandia', 'assets/img/sandia.png', 35, 35, 8);
+        game.load.spritesheet('piso', 'assets/img/Piso.png', 300, 10, 1);
     },
 
 	create: function () {
+        //this.game.physics.startSystem(Phaser.Physics.ARCADE);
+        //piso = this.game.add.sprite((game.width/2 - 115), ((game.height/2) + 130), 'piso', 0);
+
         //GRILLA
         this.grilla = new matrix(game);
         this.grilla.create(6, 7);

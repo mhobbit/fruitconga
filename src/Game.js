@@ -27,6 +27,7 @@ BasicGame.Game = function () {
     this.grilla;
     this.bg;
     this.music;
+    this.score = 0;
 };
 
 BasicGame.Game.prototype = {
@@ -42,7 +43,7 @@ BasicGame.Game.prototype = {
         this.load.image('verde', 'assets/img/frutitas/3.png');
         this.load.image('rojo', 'assets/img/frutitas/4.png');
         this.load.image('naranjo', 'assets/img/frutitas/5.png');
-        this.music = new Song([ 'assets/audio/latin/Peppy Pepe.ogg'], 124, 0, this.game);
+        this.music = new Song(['assets/audio/latin/Peppy Pepe.ogg'], 124, 0, this.game);
         this.music.preload();
     },
 
@@ -50,19 +51,27 @@ BasicGame.Game.prototype = {
         //this.game.physics.startSystem(Phaser.Physics.ARCADE);
         //piso = this.game.add.sprite((game.width/2 - 115), ((game.height/2) + 130), 'piso', 0);
 
-        //GRILLA
-        this.bg = this.add.sprite(this.world.centerX-340,this.world.centerY -215 , 'game_bg');
-        this.grilla = new matrix(game);
-        this.grilla.create(6, 7);
+        //EXTRAS!!!
+        this.score_text = game.add.text(5, 5, '', {fill: '#000'});
+        this.selector = game.add.text(586, 38, '[ ]', {fill: '#000'});
+        this.multipler_text = game.add.text(700, 500, '', {fill: '#000'});
 
         //COLA
         this.music.create();
         this.cola = new Cola(this.game, this.music);
+
+        //GRILLA
+        this.bg = this.add.sprite(this.world.centerX-340,this.world.centerY -215 , 'game_bg');
+        this.grilla = new matrix(this.game, this.cola);
+        this.grilla.create(6, 7);
 	},
 
 	update: function () {
         //this.music.update();
         this.cola.QueueUpdate();
+        if(this.score > 0){
+            this.score_text.text = "Puntaje: " + score;
+        }
 	},
 
 	quitGame: function (pointer) {

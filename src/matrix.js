@@ -1,8 +1,10 @@
-function matrix(game){
+function matrix(game, cola){
+	this.cola = cola;
 	this.game = game;
 	this.starx;
 	this.stary;
 	this.size = 40;
+	this.multipler = 1;
 }
 
 matrix.prototype.createFruit = function(x, y){
@@ -50,6 +52,14 @@ matrix.prototype.create = function(tamx, tamy) {
 matrix.prototype.onClick = function(sprite){
 	y = (sprite.y - this.stary)/this.size;
 	x = (sprite.x - this.starx)/this.size;
+	for(i = 0; i < this.cola.length; i++){
+		if(this.cola[i].x > (this.game.width/2) + 70){
+			if(sprite.key + '_1' == this.cola[i].key)
+				multipler ++;
+			else
+				multipler = 1;
+		}
+	}
 	this.killTheSame(x, y);
 	//list = this.createNew();
 	//console.log(list);
@@ -63,6 +73,7 @@ matrix.prototype.onClick = function(sprite){
 
 matrix.prototype.killTheSame = function(x, y){
 	this.matrix[y][x].kill();
+	this.game.score += 50 * this.multipler;
 	if(x > 0){
 		if(this.matrix[y][x].key == this.matrix[y][x-1].key && this.matrix[y][x-1].alive){
 			this.killTheSame(x-1, y);

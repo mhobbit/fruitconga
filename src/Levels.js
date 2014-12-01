@@ -30,14 +30,17 @@ BasicGame.Levels.prototype = {
 	},
 
     stage1Click: function(){
+        song = new Song([ 'assets/audio/latin/CumbiaNoFrills.ogg'], 84, 0, this.game);
         game.state.start('Game');
     },
 
     stage2Click: function(){
+        song = new Song([ 'assets/audio/latin/Peppy Pepe.ogg'], 124, 0, this.game);
         game.state.start('Game');
     },
 
     stage3Click: function(){
+        song = new Song([ 'assets/audio/latin/Tango de Manzana.ogg'], 127, 0, this.game);
         game.state.start('Game');
     },
 

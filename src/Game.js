@@ -42,7 +42,7 @@ BasicGame.Game.prototype = {
         this.load.image('verde', 'assets/img/frutitas/3.png');
         this.load.image('rojo', 'assets/img/frutitas/4.png');
         this.load.image('naranjo', 'assets/img/frutitas/5.png');
-        this.music = new Song([ 'assets/audio/latin/Peppy Pepe.ogg'], 124, 0, this.game);
+        this.music = song;
         this.music.preload();
     },
 

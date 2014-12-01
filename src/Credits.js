@@ -15,7 +15,7 @@ BasicGame.Credits.prototype = {
 
         this.text = game.add.text(300, 20, this.creditsText, this.style);
         this.text.setShadow(2, 2);
-
+        
         this.returnBtn = game.add.button(game.world.centerX - 95, game.world.centerY*1.8, 'returnButton', clickReturn, this, 1, 0, 2); 
 	},
 

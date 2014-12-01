@@ -58,13 +58,11 @@ BasicGame.Game.prototype = {
         //COLA
         this.music.create();
         this.cola = new Cola(this.game, this.music);
-        for(i = 0; i < 6; i++)
-            this.cola.addInQueue();
 	},
 
 	update: function () {
-        this.music.update();
-        //this.cola.QueueUpdate();
+        //this.music.update();
+        this.cola.QueueUpdate();
 	},
 
 	quitGame: function (pointer) {

@@ -1,13 +1,15 @@
 function Cola(game, music){
 	this.game = game;
 	this.music = music;
-	this.cola_x = 120;
+	this.cola_x = (this.game.width/2) - 310;
+	this.final = (this.game.width/2) + 80;
 	this.cola_y = 130;
-	this.delay = true;
+	this.delay = 1;
 	this.tolerance = 120;
 	this.queue = [];
 	this.vel = 10;
 	this.difx = 50;
+	this.starx = 50;
 }
 
 Cola.prototype.addInQueue = function(){
@@ -43,21 +45,20 @@ Cola.prototype.addInQueue = function(){
 		temp.animations.play('dance_sandia');
 		this.queue.push(temp);
 	}
-	this.difx += 50;
 }
 
 Cola.prototype.QueueUpdate = function(){
 	var flag = false;
 	//console.log(this.music.music.currentTime, this.music.lastbeat + this.music.beat);
-	if(this.music.music.currentTime > this.music.lastbeat + this.music.beat){
-		music.lastbeat += music.beat;
-		console.log(this.queue);
+	if(this.music.music.currentTime > this.music.lastbeat + (this.music.beat * 2)){
+		this.music.lastbeat += this.music.beat * 2;
+		//console.log(this.queue);
 		for(i = 0; i < this.queue.length; i++){
-			if(this.queue[i].x > 600){
+			if(this.queue[i].x > this.final){
 				if(this.queue[i].alive){
-					multipler = 1;
-					multipler_text.fontSize = 10;
-					multipler_text.text = '';
+					//multipler = 1;
+					//multipler_text.fontSize = 10;
+					//multipler_text.text = '';
 					this.queue[i].kill();
 					flag = true;
 				}
@@ -66,15 +67,15 @@ Cola.prototype.QueueUpdate = function(){
 				}
 			}
 			else
-				this.queue[i].x += 40;
+				this.queue[i].x += 35;
 		}
-		if(this.delay){
+		if(this.delay == 1){
 			this.addInQueue();
-			if(Math.random() > .5)
-				this.delay = false;
+			this.delay = 2;
 		}
-		else
-			this.delay = true;
+		else{
+			this.delay = 1;
+		}
 		if(flag)
 			this.queue.shift();
 	}

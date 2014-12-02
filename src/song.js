@@ -5,7 +5,7 @@ function Song(songList, bpm, offset, game){
 	this.beat = 60000/bpm;
 
 	this.lastbeat = 0;
-	this.tolerance = 200;
+	this.tolerance = 400;
 	//llamar preload, create y update en los mismos metodos del stage.
 	this.preload = function(){
 		game.load.audio('song', songList, true);

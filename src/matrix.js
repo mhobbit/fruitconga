@@ -55,10 +55,13 @@ matrix.prototype.onClick = function(sprite){
 		return;
 	for(i = 0; i < this.cola.queue.length; i++){
 		if(this.cola.queue[i].x == 488){
-			if(sprite.key + '_1' == this.cola.queue[i].key)
-				multipler ++;
-			else
-				multipler = 1;
+			//console.log(sprite.key, this.cola.queue[i].key)
+			if(sprite.key + '_1' == this.cola.queue[i].key){
+				this.multipler += 1;
+			}
+			else{
+				this.multipler = 1;
+			}
 		}
 	}
 	this.killTheSame(x, y);

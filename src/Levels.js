@@ -43,7 +43,7 @@ BasicGame.Levels.prototype = {
 	},
 
     stage1Click: function(){
-        song = new Song([ 'assets/audio/latin/Back on Track.ogg'], 84, 60000/84, this.game);
+        song = new Song([ 'assets/audio/latin/CumbiaNoFrills.ogg'], 84, 60000/84, this.game);
         game.state.states['Game'].level = 1;
         game.state.start('Game');
     },

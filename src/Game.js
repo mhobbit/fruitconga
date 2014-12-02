@@ -85,6 +85,10 @@ BasicGame.Game.prototype = {
         //this.music.update();
         this.cola.QueueUpdate();
         this.grilla.ScoreUpdate(this.score_text, this.multipler_text);
+        if(health <= 0){
+            this.music.destroy();
+            this.state.start('GameOver');
+        }
 	},
 
 	quitGame: function (pointer) {

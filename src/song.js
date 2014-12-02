@@ -32,4 +32,7 @@ function Song(songList, bpm, offset, game){
 	    }
 	    return false;
 	}
+	this.destroy = function(){
+		this.music.destroy();
+	}
 }

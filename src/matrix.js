@@ -62,8 +62,9 @@ matrix.prototype.onClick = function(sprite){
 //		if(this.cola.queue[i].x >= 488+5 && this.cola.queue[i].x <= 488-5){
 		if(this.cola.queue[i].overlap(spotlight)){
 			//console.log(sprite.key, this.cola.queue[i].key)
-			if(sprite.key + '_1' == this.cola.queue[i].key && this.multipler < 5){
-				this.multipler += 1;
+			if(sprite.key + '_1' == this.cola.queue[i].key){
+				if(this.multipler < 5)
+					this.multipler += 1;
 			}
 			else{
 				this.multipler = 1;

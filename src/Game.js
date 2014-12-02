@@ -27,6 +27,7 @@ BasicGame.Game = function () {
     this.grilla;
     this.bg;
     this.music;
+    this.level;
 };
 
 BasicGame.Game.prototype = {
@@ -91,9 +92,12 @@ BasicGame.Game.prototype = {
   //          game.state.states['ScoreScreen'].score = this.score_text.text;
   //          this.state.start('ScoreScreen'); //testeando la pantalla de score
         }
-        if(this.music.isOver){
+        if(!this.music.music.isPlaying && this.music.music.isDecoded && this.grilla.score > 0){
             this.music.destroy();
             game.state.states['ScoreScreen'].score = this.score_text.text;
+            game.state.states['ScoreScreen'].score_real = this.grilla.score;
+            game.state.states['ScoreScreen'].level = this.level;
+            game.state.states['ScoreScreen'].active = true;
             this.state.start('ScoreScreen'); //testeando la pantalla de score
         }
 	},

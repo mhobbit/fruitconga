@@ -4,6 +4,10 @@ BasicGame.ScoreScreen = function () {
 	this.playButton;
 	this.music;
 	this.score;
+	this.score_real;
+	this.stage;
+	this.active = false;
+	this.level;
 };
 
 BasicGame.ScoreScreen.prototype = {
@@ -13,7 +17,6 @@ BasicGame.ScoreScreen.prototype = {
 	},
 
 	create: function () {
-		console.out(this.score);
 		function clickReturn(){
 			this.music.destroy();
 		    this.state.start('MainMenu');
@@ -28,12 +31,25 @@ BasicGame.ScoreScreen.prototype = {
 	    this.music = game.add.audio('conga');
 		this.music.play();
 
-	    this.playButton = game.add.button(game.world.centerX - 95, game.world.centerY*1.5, 'returnButton', clickReturn, this, 1, 0, 2); 
+	    this.playButton = game.add.button(game.world.centerX - 95, game.world.centerY + 200, 'returnButton', clickReturn, this, 1, 0, 2); 
 		
-		this.multipler_text = game.add.bitmapText(this.world.centerX-(this.score.length * 45)/2, this.world.centerY, 'fuente1', this.score);
+		this.multipler_text = game.add.bitmapText(this.world.centerX-(this.score.length * 45)/2, this.world.centerY + 100, 'fuente1', this.score);
 	},
 
 	update: function () {
+		if(this.active){
+			switch(this.level){
+				case(1):
+					if(this.score_real > 2000){
+						this.state.states['Levels'].unloqued[1] = true;
+					}
+					break;
+				case(2):
+					if(this.score_real > 5000){
+						this.state.states['Levels'].unloqued[2] = true;
+					}
+			}
+		}
 	},
 
 	resize: function (width, height) {

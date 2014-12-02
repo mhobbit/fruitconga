@@ -27,7 +27,6 @@ BasicGame.Game = function () {
     this.grilla;
     this.bg;
     this.music;
-    this.score = 0;
 };
 
 BasicGame.Game.prototype = {
@@ -43,35 +42,37 @@ BasicGame.Game.prototype = {
         this.load.image('verde', 'assets/img/frutitas/3.png');
         this.load.image('rojo', 'assets/img/frutitas/4.png');
         this.load.image('naranjo', 'assets/img/frutitas/5.png');
+        this.load.image('spotlight', 'assets/img/frutitas/spotlight.png');
         this.music = song;
         this.music.preload();
     },
 
 	create: function () {
-        //this.game.physics.startSystem(Phaser.Physics.ARCADE);
-        //piso = this.game.add.sprite((game.width/2 - 115), ((game.height/2) + 130), 'piso', 0);
+        //BACKGROUND
+        this.bg = this.add.sprite(this.world.centerX-340,this.world.centerY -215 , 'game_bg');
 
         //EXTRAS!!!
-        this.score_text = game.add.text(5, 5, '', {fill: '#000'});
-        this.selector = game.add.text(586, 38, '[ ]', {fill: '#000'});
-        this.multipler_text = game.add.text(700, 500, '', {fill: '#000'});
+        this.score_text = game.add.text(173, 253, '', {fill: '#000'});
+        this.score_text.scale.x = .8;
+        this.score_text.scale.y = .8;
+        this.spotlight = game.add.sprite(Math.round(this.game.width/2 + 55), Math.round(this.game.height/2 - 195), 'spotlight');
+        this.multipler_text = game.add.text(173, 203, '', {fill: '#000'});
+        this.multipler_text.scale.x = .5;
+        this.multipler_text.scale.y = .6;
 
         //COLA
         this.music.create();
         this.cola = new Cola(this.game, this.music);
 
         //GRILLA
-        this.bg = this.add.sprite(this.world.centerX-340,this.world.centerY -215 , 'game_bg');
-        this.grilla = new matrix(this.game, this.cola);
+        this.grilla = new matrix(this.game, this.cola, this.music, this.score);
         this.grilla.create(6, 7);
 	},
 
 	update: function () {
         //this.music.update();
         this.cola.QueueUpdate();
-        if(this.score > 0){
-            this.score_text.text = "Puntaje: " + score;
-        }
+        this.grilla.ScoreUpdate(this.score_text, this.multipler_text);
 	},
 
 	quitGame: function (pointer) {

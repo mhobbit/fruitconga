@@ -1,6 +1,8 @@
-function matrix(game, cola){
+function matrix(game, cola, music, score){
+	this.music = music;	
 	this.cola = cola;
 	this.game = game;
+	this.score = 0;
 	this.starx;
 	this.stary;
 	this.size = 40;
@@ -28,9 +30,6 @@ matrix.prototype.createFruit = function(x, y){
 	temp.inputEnabled = true;
 	temp.input.useHandCursor = true;
 	temp.events.onInputDown.add(this.onClick, this);
-	/*this.game.physics.enable(temp, Phaser.Physics.ARCADE);
-	temp.body.bounce.set(0);
-	temp.body.gravity.set(0, 180);*/
 	return temp;
 }
 
@@ -52,20 +51,17 @@ matrix.prototype.create = function(tamx, tamy) {
 matrix.prototype.onClick = function(sprite){
 	y = (sprite.y - this.stary)/this.size;
 	x = (sprite.x - this.starx)/this.size;
-	for(i = 0; i < this.cola.length; i++){
-		if(this.cola[i].x > (this.game.width/2) + 70){
-			if(sprite.key + '_1' == this.cola[i].key)
+	if(!this.music.onBeat())
+		return;
+	for(i = 0; i < this.cola.queue.length; i++){
+		if(this.cola.queue[i].x == 488){
+			if(sprite.key + '_1' == this.cola.queue[i].key)
 				multipler ++;
 			else
 				multipler = 1;
 		}
 	}
 	this.killTheSame(x, y);
-	//list = this.createNew();
-	//console.log(list);
-	//this.downList(list);
-	//list = this.createNew();
-	//this.downList(list);
 	while(list = this.createNew()){
 		this.downList(list);
 	}
@@ -73,7 +69,7 @@ matrix.prototype.onClick = function(sprite){
 
 matrix.prototype.killTheSame = function(x, y){
 	this.matrix[y][x].kill();
-	this.game.score += 50 * this.multipler;
+	this.score += 50 * this.multipler;
 	if(x > 0){
 		if(this.matrix[y][x].key == this.matrix[y][x-1].key && this.matrix[y][x-1].alive){
 			this.killTheSame(x-1, y);
@@ -139,4 +135,11 @@ matrix.prototype.downList = function(list){
 	itween.onComplete.active = true;
 	itween.onComplete.add(this.createNew);
 	return itween;*/
+}
+
+matrix.prototype.ScoreUpdate = function(score_text, multipler_text){
+	if(this.score > 0){
+		score_text.text = 'Score: ' + this.score;
+	}
+	multipler_text.text = 'Multiplicador: ' + this.multipler;
 }

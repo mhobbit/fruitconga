@@ -1,9 +1,9 @@
 function Cola(game, music){
 	this.game = game;
 	this.music = music;
-	this.cola_x = (this.game.width/2) - 310;
-	this.final = (this.game.width/2) + 80;
-	this.cola_y = 130;
+	this.cola_x = Math.round((this.game.width/2) - 310);
+	this.final = Math.round((this.game.width/2) + 80);
+	this.cola_y = Math.round((this.game.height/2) - 197);
 	this.delay = 1;
 	this.tolerance = 120;
 	this.queue = [];
@@ -49,16 +49,11 @@ Cola.prototype.addInQueue = function(){
 
 Cola.prototype.QueueUpdate = function(){
 	var flag = false;
-	//console.log(this.music.music.currentTime, this.music.lastbeat + this.music.beat);
 	if(this.music.music.currentTime > this.music.lastbeat + (this.music.beat * 2)){
 		this.music.lastbeat += this.music.beat * 2;
-		//console.log(this.queue);
 		for(i = 0; i < this.queue.length; i++){
 			if(this.queue[i].x > this.final){
 				if(this.queue[i].alive){
-					//multipler = 1;
-					//multipler_text.fontSize = 10;
-					//multipler_text.text = '';
 					this.queue[i].kill();
 					flag = true;
 				}

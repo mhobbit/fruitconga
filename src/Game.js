@@ -88,6 +88,13 @@ BasicGame.Game.prototype = {
         if(health <= 0){
             this.music.destroy();
             this.state.start('GameOver');
+  //          game.state.states['ScoreScreen'].score = this.score_text.text;
+  //          this.state.start('ScoreScreen'); //testeando la pantalla de score
+        }
+        if(this.music.isOver){
+            this.music.destroy();
+            game.state.states['ScoreScreen'].score = this.score_text.text;
+            this.state.start('ScoreScreen'); //testeando la pantalla de score
         }
 	},
 

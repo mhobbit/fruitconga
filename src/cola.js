@@ -62,7 +62,9 @@ Cola.prototype.QueueUpdate = function(){
 				}
 			}
 			else{
-				this.queue[i].x += 35;
+				//this.queue[i].x += 35;
+				pos = this.queue[i].x + 35;
+				this.game.add.tween(this.queue[i]).to({x:pos}, 5, Phaser.Easing.Default, true, 0, 0, false);
 			}
 		}
 		if(this.delay == 1){

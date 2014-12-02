@@ -6,6 +6,7 @@ function Song(songList, bpm, offset, game){
 
 	this.lastbeat = 0;
 	this.tolerance = 400;
+	this.isOver = false;
 	//llamar preload, create y update en los mismos metodos del stage.
 	this.preload = function(){
 		game.load.audio('song', songList, true);
@@ -15,6 +16,10 @@ function Song(songList, bpm, offset, game){
 		this.music = game.add.audio('song');
 		this.music.play()
 		this.lastbeat += offset;
+	    this.music.onMarkerComplete.add (() =>
+	    {
+	    	this.isOver = true;
+	    });
 	}
 
 	this.update = function(){
@@ -31,5 +36,8 @@ function Song(songList, bpm, offset, game){
 	    	return true;
 	    }
 	    return false;
+	}
+	this.destroy = function(){
+		this.music.destroy();
 	}
 }

@@ -46,17 +46,23 @@ matrix.prototype.create = function(tamx, tamy) {
 			this.matrix[y][x] = temp;
 		}
 	}
+	//variable para determinar el numero de rondas con la que muere el jugador:
+	health = 10;
+
 };
 
 matrix.prototype.onClick = function(sprite){
+	if(!this.music.onBeat()){
+		health -= 1;
+		return;
+	}
 	y = (sprite.y - this.stary)/this.size;
 	x = (sprite.x - this.starx)/this.size;
-	if(!this.music.onBeat())
-		return;
 	for(i = 0; i < this.cola.queue.length; i++){
-		if(this.cola.queue[i].x == 488){
+//		if(this.cola.queue[i].x >= 488+5 && this.cola.queue[i].x <= 488-5){
+		if(this.cola.queue[i].overlap(spotlight)){
 			//console.log(sprite.key, this.cola.queue[i].key)
-			if(sprite.key + '_1' == this.cola.queue[i].key){
+			if(sprite.key + '_1' == this.cola.queue[i].key && this.multipler < 5){
 				this.multipler += 1;
 			}
 			else{
@@ -65,6 +71,8 @@ matrix.prototype.onClick = function(sprite){
 		}
 	}
 	this.killTheSame(x, y);
+	if (health < 20)
+		health += 1;
 	while(list = this.createNew()){
 		this.downList(list);
 	}
@@ -115,34 +123,34 @@ matrix.prototype.createNew = function(){
 		}
 	}
 	if(flag){
-		//this.downList(list);
-		return list;
+		this.downList(list);
+		//return list;
 	}
 	else
 		return false;
 }
 
 matrix.prototype.downList = function(list){
-	for(t = 0; t < this.size; t++){
+	/*for(t = 0; t < this.size; t++){
 		for(i = 0; i < list.length; i++){
 			this.matrix[list[i][0]][list[i][1]].y += 1;
 		}
-	}
-	/*console.log(this);
-	listas = [];
+	}*/
 	for(i = 0; i < list.length; i++){
 		pos = this.matrix[list[i][0]][list[i][1]].y + this.size;
 		sprite = this.matrix[list[i][0]][list[i][1]];
-		itween = this.game.add.tween(sprite).to({y: pos}, 10000, Phaser.Easing.Default, true, 0, 0, false);
+		itween = this.game.add.tween(sprite).to({y: pos}, 500, Phaser.Easing.Elastic.Out, true, 0, 0, false);
 	}
-	itween.onComplete.active = true;
-	itween.onComplete.add(this.createNew);
-	return itween;*/
+	itween.onComplete.add(this.createNew, this);
 }
 
 matrix.prototype.ScoreUpdate = function(score_text, multipler_text){
 	if(this.score > 0){
-		score_text.text = 'Score: ' + this.score;
+		score_text.setText(this.score);
 	}
-	multipler_text.text = 'Multiplicador: ' + this.multipler;
+	multipler_text.setText('x' + this.multipler);
 }
+
+/*function debugees(){
+	console.log("hola");
+}*/

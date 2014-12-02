@@ -61,8 +61,9 @@ Cola.prototype.QueueUpdate = function(){
 					flag = true;
 				}
 			}
-			else
+			else{
 				this.queue[i].x += 35;
+			}
 		}
 		if(this.delay == 1){
 			this.addInQueue();

@@ -61,8 +61,11 @@ Cola.prototype.QueueUpdate = function(){
 					flag = true;
 				}
 			}
-			else
-				this.queue[i].x += 35;
+			else{
+				//this.queue[i].x += 35;
+				pos = this.queue[i].x + 35;
+				this.game.add.tween(this.queue[i]).to({x:pos}, 500, Phaser.Easing.Default, true, 0, 0, false);
+			}
 		}
 		if(this.delay == 1){
 			this.addInQueue();

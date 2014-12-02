@@ -52,11 +52,11 @@ BasicGame.Game.prototype = {
         this.bg = this.add.sprite(this.world.centerX-340,this.world.centerY -215 , 'game_bg');
 
         //EXTRAS!!!
-        this.score_text = game.add.text(173, 235, '', {fill: '#000'});
+        this.score_text = game.add.text(173, 253, '', {fill: '#000'});
         this.score_text.scale.x = .8;
         this.score_text.scale.y = .8;
         this.spotlight = game.add.sprite(Math.round(this.game.width/2 + 55), Math.round(this.game.height/2 - 195), 'spotlight');
-        this.multipler_text = game.add.text(173, 183, '', {fill: '#000'});
+        this.multipler_text = game.add.text(173, 203, '', {fill: '#000'});
         this.multipler_text.scale.x = .5;
         this.multipler_text.scale.y = .6;
 

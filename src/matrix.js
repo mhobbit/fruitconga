@@ -131,7 +131,7 @@ matrix.prototype.downList = function(list){
 	for(i = 0; i < list.length; i++){
 		pos = this.matrix[list[i][0]][list[i][1]].y + this.size;
 		sprite = this.matrix[list[i][0]][list[i][1]];
-		itween = this.game.add.tween(sprite).to({y: pos}, 500, Phaser.Easing.Default, true, 0, 0, false);
+		itween = this.game.add.tween(sprite).to({y: pos}, 500, Phaser.Easing.Elastic.Out, true, 0, 0, false);
 	}
 	itween.onComplete.add(this.createNew, this);
 }

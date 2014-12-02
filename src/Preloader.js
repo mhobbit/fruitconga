@@ -37,9 +37,9 @@ BasicGame.Preloader.prototype = {
     	this.load.spritesheet('returnButton', 'assets/buttons/return_button.png', 190,  49);
     	this.load.spritesheet('creditsButton', 'assets/buttons/credits_button.png', 190,  49);
 
-    	this.load.image('stage1', 'assets/img/party1.png');
-    	this.load.image('stage2', 'assets/img/party2.png');
-    	this.load.image('stage3', 'assets/img/party3.png');
+    	this.load.spritesheet('stage1', 'assets/img/party1_v2.png', 238, 200);
+    	this.load.spritesheet('stage2', 'assets/img/party2_v2.png', 200, 200);
+    	this.load.spritesheet('stage3', 'assets/img/party3_v2.png', 251, 200);
 
     	game.load.text('credits', 'assets/text/credits.txt');
 

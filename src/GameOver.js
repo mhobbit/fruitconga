@@ -14,7 +14,7 @@ BasicGame.GameOver.prototype = {
 	create: function () {
 		function clickReturn(){
 			this.music.destroy();
-		    this.state.start('MainMenu');
+		    this.state.start('Levels');
 		}
 
 		function mute(){

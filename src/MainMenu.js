@@ -56,6 +56,7 @@ BasicGame.MainMenu.prototype = {
 };
 function clickPlay() {
 	this.music.destroy();
+	game.state.states['Levels'].active = false;
 	this.state.start('Levels');
 }
 

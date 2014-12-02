@@ -5,6 +5,7 @@ BasicGame.Preloader = function () {
 	this.preloadBar = null;
 
 	this.ready = false;
+	var song;
 
 };
 

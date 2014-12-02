@@ -17,32 +17,32 @@ Cola.prototype.addInQueue = function(){
 	var temp;
 	if(value < .2){
 		temp = game.add.sprite(this.cola_x + this.difx, this.cola_y, 'banana_1', 3);
-		temp.animations.add('dance_banana', [0, 1, 2, 3, 4, 5, 6, 7], this.vel, true);
-		temp.animations.play('dance_banana');
+		temp.animations.add('banana_1', [0, 1, 2, 3, 4, 5, 6, 7], this.vel, true);
+		temp.animations.play('banana_1');
 		this.queue.push(temp);
 	}
 	else if(value < .4){
-		temp = game.add.sprite(this.cola_x + this.difx, this.cola_y, 'apple_1', 3);
-		temp.animations.add('dance_apple', [0, 1, 2, 3, 4, 5, 6, 7], this.vel, true);
-		temp.animations.play('dance_apple');
+		temp = game.add.sprite(this.cola_x + this.difx, this.cola_y, 'morado_1', 3);
+		temp.animations.add('morado_1', [0, 1, 2, 3, 4, 5, 6, 7], this.vel, true);
+		temp.animations.play('morado_1');
 		this.queue.push(temp);
 	}
 	else if(value < .6){
-		temp = game.add.sprite(this.cola_x + this.difx, this.cola_y, 'green_apple_1', 3);
-		temp.animations.add('dance_green_apple', [0, 1, 2, 3, 4, 5, 6, 7], this.vel, true);
-		temp.animations.play('dance_green_apple');
+		temp = game.add.sprite(this.cola_x + this.difx, this.cola_y, 'verde_1', 3);
+		temp.animations.add('verde_1', [0, 1, 2, 3, 4, 5, 6, 7], this.vel, true);
+		temp.animations.play('verde_1');
 		this.queue.push(temp);
 	}
 	else if(value < .8){
-		temp = game.add.sprite(this.cola_x + this.difx, this.cola_y, 'pina_1', 3);
-		temp.animations.add('dance_pina', [0, 1, 2, 3, 4, 5, 6, 7], this.vel, true);
-		temp.animations.play('dance_pina');
+		temp = game.add.sprite(this.cola_x + this.difx, this.cola_y, 'rojo_1', 3);
+		temp.animations.add('rojo_1', [0, 1, 2, 3, 4, 5, 6, 7], this.vel, true);
+		temp.animations.play('rojo_1');
 		this.queue.push(temp);
 	}
 	else{
-		temp = game.add.sprite(this.cola_x + this.difx, this.cola_y, 'sandia_1', 3);
-		temp.animations.add('dance_sandia', [0, 1, 2, 3, 4, 5, 6, 7], this.vel, true);
-		temp.animations.play('dance_sandia');
+		temp = game.add.sprite(this.cola_x + this.difx, this.cola_y, 'naranjo_1', 3);
+		temp.animations.add('naranjo_1', [0, 1, 2, 3, 4, 5, 6, 7], this.vel, true);
+		temp.animations.play('naranjo_1');
 		this.queue.push(temp);
 	}
 }

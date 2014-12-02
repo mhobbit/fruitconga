@@ -30,7 +30,7 @@ BasicGame.Levels.prototype = {
 	},
 
     stage1Click: function(){
-        song = new Song([ 'assets/audio/latin/CumbiaNoFrills.ogg'], 84, 0, this.game);
+        song = new Song([ 'assets/audio/latin/CumbiaNoFrills.ogg'], 84, 60000/84, this.game);
         game.state.start('Game');
     },
 

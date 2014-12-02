@@ -138,9 +138,9 @@ matrix.prototype.downList = function(list){
 
 matrix.prototype.ScoreUpdate = function(score_text, multipler_text){
 	if(this.score > 0){
-		score_text.text = 'Score: ' + this.score;
+		score_text.setText(this.score);
 	}
-	multipler_text.text = 'Multiplicador: ' + this.multipler;
+	multipler_text.setText('x' + this.multipler);
 }
 
 /*function debugees(){

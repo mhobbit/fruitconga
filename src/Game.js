@@ -36,29 +36,30 @@ BasicGame.Game.prototype = {
         this.game.load.spritesheet('verde_1', 'assets/sprites/3.png', 35, 35, 8);
         this.game.load.spritesheet('rojo_1', 'assets/sprites/4.png', 35, 35, 8);
         this.game.load.spritesheet('naranjo_1', 'assets/sprites/5.png', 35, 35, 8);
+        this.game.load.spritesheet('spotlight', 'assets/img/frutitas/spotlight_spritesheet.png', 35, 35, 2);
         this.load.image('game_bg', 'assets/backgrounds/game.png');
         this.load.image('banana', 'assets/img/frutitas/1.png');
         this.load.image('morado', 'assets/img/frutitas/2.png');
         this.load.image('verde', 'assets/img/frutitas/3.png');
         this.load.image('rojo', 'assets/img/frutitas/4.png');
         this.load.image('naranjo', 'assets/img/frutitas/5.png');
-        this.load.image('spotlight', 'assets/img/frutitas/spotlight.png');
+        this.load.bitmapFont('fuente', 'assets/fonts/showcard_title0.png', 'assets/fonts/showcard_title0.fnt');
+
         this.music = song;
         this.music.preload();
     },
 
 	create: function () {
-        //BACKGROUND
+        //BACKGROUND y LOGO
         this.bg = this.add.sprite(this.world.centerX-340,this.world.centerY -215 , 'game_bg');
+        this.add.sprite(this.world.centerX - 150, 5, 'logoSmall');
 
         //EXTRAS!!!
-        this.score_text = game.add.text(173, 253, '', {fill: '#000'});
-        this.score_text.scale.x = .8;
-        this.score_text.scale.y = .8;
+        this.score_text = game.add.bitmapText( this.world.centerX-250, this.world.centerY -225, 'fuente','0', 35);
+
         this.spotlight = game.add.sprite(Math.round(this.game.width/2 + 55), Math.round(this.game.height/2 - 195), 'spotlight');
-        this.multipler_text = game.add.text(173, 203, '', {fill: '#000'});
-        this.multipler_text.scale.x = .5;
-        this.multipler_text.scale.y = .6;
+
+        this.multipler_text = game.add.bitmapText(this.world.centerX-180, this.world.centerY -130, 'fuente','', 35);
 
         //COLA
         this.music.create();
@@ -70,6 +71,11 @@ BasicGame.Game.prototype = {
 	},
 
 	update: function () {
+        if (this.music.onBeat()){
+            this.spotlight.frame = 1;
+        }
+        else
+            this.spotlight.frame = 0;
         //this.music.update();
         this.cola.QueueUpdate();
         this.grilla.ScoreUpdate(this.score_text, this.multipler_text);

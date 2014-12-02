@@ -43,7 +43,9 @@ BasicGame.Game.prototype = {
         this.load.image('verde', 'assets/img/frutitas/3.png');
         this.load.image('rojo', 'assets/img/frutitas/4.png');
         this.load.image('naranjo', 'assets/img/frutitas/5.png');
+        this.load.image('barra', 'assets/img/frutitas/barra.png');
         this.load.bitmapFont('fuente', 'assets/fonts/showcard_title0.png', 'assets/fonts/showcard_title0.fnt');
+        this.load.bitmapFont('fuente1', 'assets/fonts/showcard_title1.png', 'assets/fonts/showcard_title1.fnt');
 
         this.music = song;
         this.music.preload();
@@ -55,11 +57,11 @@ BasicGame.Game.prototype = {
         this.add.sprite(this.world.centerX - 150, 5, 'logoSmall');
 
         //EXTRAS!!!
-        this.score_text = game.add.bitmapText( this.world.centerX-250, this.world.centerY -225, 'fuente','0', 35);
-
-        this.spotlight = game.add.sprite(Math.round(this.game.width/2 + 55), Math.round(this.game.height/2 - 195), 'spotlight');
-
-        this.multipler_text = game.add.bitmapText(this.world.centerX-180, this.world.centerY -130, 'fuente','', 35);
+        this.score_text = game.add.bitmapText( this.world.centerX-260, this.world.centerY - 65 , 'fuente','0');
+        spotlight = game.add.sprite(Math.round(this.game.width/2 + 55), Math.round(this.game.height/2 - 195), 'spotlight');
+        this.multipler_text = game.add.bitmapText(this.world.centerX-250, this.world.centerY - 3, 'fuente1','');
+        this.healthbar = this.game.add.sprite(this.world.centerX-271, this.world.centerY - 117,'barra');
+        this.healthbar.cropEnabled = true;
 
         //COLA
         this.music.create();
@@ -71,11 +73,15 @@ BasicGame.Game.prototype = {
 	},
 
 	update: function () {
+        //tamaño healthbar
+        this.healthbar.crop(new Phaser.Rectangle(0,0,(health/20)*132, 20));
+
+        //cambio de luz del foco        
         if (this.music.onBeat()){
-            this.spotlight.frame = 1;
+            spotlight.frame = 1;
         }
         else
-            this.spotlight.frame = 0;
+            spotlight.frame = 0;
         //this.music.update();
         this.cola.QueueUpdate();
         this.grilla.ScoreUpdate(this.score_text, this.multipler_text);

@@ -46,17 +46,23 @@ matrix.prototype.create = function(tamx, tamy) {
 			this.matrix[y][x] = temp;
 		}
 	}
+	//variable para determinar el numero de rondas con la que muere el jugador:
+	health = 10;
+
 };
 
 matrix.prototype.onClick = function(sprite){
+	if(!this.music.onBeat()){
+		health -= 1;
+		return;
+	}
 	y = (sprite.y - this.stary)/this.size;
 	x = (sprite.x - this.starx)/this.size;
-	if(!this.music.onBeat())
-		return;
 	for(i = 0; i < this.cola.queue.length; i++){
-		if(this.cola.queue[i].x == 488){
+//		if(this.cola.queue[i].x >= 488+5 && this.cola.queue[i].x <= 488-5){
+		if(this.cola.queue[i].overlap(spotlight)){
 			//console.log(sprite.key, this.cola.queue[i].key)
-			if(sprite.key + '_1' == this.cola.queue[i].key){
+			if(sprite.key + '_1' == this.cola.queue[i].key && this.multipler < 5){
 				this.multipler += 1;
 			}
 			else{
@@ -65,6 +71,8 @@ matrix.prototype.onClick = function(sprite){
 		}
 	}
 	this.killTheSame(x, y);
+	if (health < 20)
+		health += 1;
 	while(list = this.createNew()){
 		this.downList(list);
 	}

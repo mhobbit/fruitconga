@@ -28,6 +28,7 @@ BasicGame.Game = function () {
     this.bg;
     this.music;
     this.level;
+    this.gameover = false;
 };
 
 BasicGame.Game.prototype = {
@@ -87,18 +88,20 @@ BasicGame.Game.prototype = {
         this.cola.QueueUpdate();
         this.grilla.ScoreUpdate(this.score_text, this.multipler_text);
         if(health <= 0){
-            this.music.destroy();
-            this.state.start('GameOver');
-  //          game.state.states['ScoreScreen'].score = this.score_text.text;
-  //          this.state.start('ScoreScreen'); //testeando la pantalla de score
+            this.music.music.stop();
+            this.gameover = true;
         }
         if(!this.music.music.isPlaying && this.music.music.isDecoded && this.grilla.score > 0){
             this.music.destroy();
-            game.state.states['ScoreScreen'].score = this.score_text.text;
-            game.state.states['ScoreScreen'].score_real = this.grilla.score;
-            game.state.states['ScoreScreen'].level = this.level;
-            game.state.states['ScoreScreen'].active = true;
-            this.state.start('ScoreScreen'); //testeando la pantalla de score
+            if(this.gameover)
+                this.state.start('GameOver');
+            else{
+                game.state.states['ScoreScreen'].score = this.score_text.text;
+                game.state.states['ScoreScreen'].score_real = this.grilla.score;
+                game.state.states['ScoreScreen'].level = this.level;
+                game.state.states['ScoreScreen'].active = true;
+                this.state.start('ScoreScreen'); //testeando la pantalla de score
+            }
         }
 	},
 

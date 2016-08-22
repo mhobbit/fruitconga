@@ -1,4 +1,4 @@
-fruitconga
+![FRUIT CONGA](https://raw.githubusercontent.com/mhobbit/fruitconga/master/assets/img/logo.png)
 ==========
 
 Match-3 Game Made with PhaserJS for a project on a videogames creation workshop.
